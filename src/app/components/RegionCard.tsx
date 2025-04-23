@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { useRouter } from 'next/navigation';
+import {useRouter} from 'next/navigation';
+import {getRegionCountries} from "@/app/api/getAllCountries";
 
 interface IMG {
     name: string;
@@ -21,9 +22,19 @@ export const RegionCard = () => {
         { name: "All Countries", image: "/images/allCountries.jpg" },
     ];
 
-    const showRegionCountries = (continent:string) => {
-      router.push(`/pages/countries?region=${continent}`);
+    const showRegionCountries = async (continent: string) => {
+        try {
+            const countries = await getRegionCountries(continent);
 
+            if (!countries || countries.length === 0) {
+                router.push("/not-found");
+            } else {
+                router.push(`/pages/countries?region=${continent}`);
+            }
+        } catch (error) {
+            console.error("Error fetching countries:", error);
+            router.push("/not-found");
+        }
     }
 
     return (
