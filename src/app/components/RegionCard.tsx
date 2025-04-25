@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {useRouter} from 'next/navigation';
 import {getRegionCountries} from "@/app/api/getAllCountries";
+import getAllCities from "@/app/api/getAllCities";
 
 interface IMG {
     name: string;

@@ -7,7 +7,6 @@ export async function getRegionCountries(region: string) {
                 : `https://restcountries.com/v3.1/region/${region}`;
 
             const response = await axios.get(url);
-            console.log(698688689, response);
             return response.data.map((country: any) => ({
                 name: country.name?.common || "Unknown",
                 capital: country.capital?.[0] || "No capital",
