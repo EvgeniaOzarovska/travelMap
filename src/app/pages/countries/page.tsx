@@ -3,7 +3,7 @@
 import {useEffect, useState} from "react";
 import {getRegionCountries} from "@/app/api/getAllCountries";
 import {useSearchParams} from "next/navigation";
-import CardCountry, {Country} from "@/app/components/Card";
+import CardCountry, {Country} from "@/app/components/CountryCard";
 
 const CountriesPage = () => {
     const searchParams = useSearchParams();
